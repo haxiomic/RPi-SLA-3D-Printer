@@ -35,17 +35,19 @@ StepperMotor.prototype.init = function(options){
 	}
 };
 
-StepperMotor.prototype.step = function(){
+StepperMotor.prototype.step = function(clockwise){
+	if(typeof(clockwise)==='undefined') clockwise = this.clockwise;
 	for(var i = 0; i < this.pins.length; i++){
 		activePins[i]( this.sequence[stepi][i] == 1 );
 	}
 
-	stepi += this.clockwise ? 1 : -1;
+	stepi += clockwise ? 1 : -1;
 	if(stepi<0)stepi = this.sequence.length-1;
 	if(stepi>=this.sequence.length)stepi = 0;
 };
 
-StepperMotor.prototype.spin = function(degrees){
+StepperMotor.prototype.spin = function(degrees, clockwise){
+	if(typeof(clockwise)==='undefined') clockwise = this.clockwise;
 	if(typeof(degrees)==='undefined'){
 		timer = setInterval(this.step.bind(this), this.sequenceInterval);
 		return;
@@ -54,7 +56,7 @@ StepperMotor.prototype.spin = function(degrees){
 	var requiredSteps = Math.round(degrees/STRIDE_ANGLE);
 	var stepCount = requiredSteps;
 	timer = setInterval(function(){
-		this.step();
+		this.step(clockwise);
 		requiredSteps--;
 		if(!(requiredSteps>0)) 
 			clearInterval(timer);
