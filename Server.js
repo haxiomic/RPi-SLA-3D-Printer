@@ -29,7 +29,7 @@ Server.prototype.start = function(options) {
 	});
 
 	app.get('/', function(req, res){
-	  res.sendFile('./interface/index.html');
+	  res.sendfile('./interface/index.html');
 	});
 
 	io.on('connection', onConnection.bind(this));
