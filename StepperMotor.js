@@ -1,3 +1,4 @@
+return;
 //Model Number: 28BYJ-48
 var GPIO = require('r-pi-gpio');
 

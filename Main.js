@@ -1,4 +1,7 @@
 var StepperMotor = require('./StepperMotor.js');
+var Server = require('./Server.js');
+
+Server.start();
 
 //start server
 //present interface

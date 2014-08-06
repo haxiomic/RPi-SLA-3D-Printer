@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<title>Homebrew SLA</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Homebrew SLA</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<button id="test-motor" class="btn btn-primary">Test Motor</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		var socket = io();
+
+		document.getElementById('test-motor').onclick = function () {
+			socket.emit('test-motor');
+			console.log('click:D');
+		}
+	</script>
+</body>
+</html>
