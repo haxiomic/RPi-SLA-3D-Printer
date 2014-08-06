@@ -53,7 +53,8 @@ StepperMotor.prototype.spin = function(degrees, clockwise){
 		return;
 	}
 	
-	var requiredSteps = Math.round(degrees/STRIDE_ANGLE);
+	if(degrees<0)clockwise = !clockwise;
+	var requiredSteps = Math.round(Math.abs(degrees)/STRIDE_ANGLE);
 	var stepCount = requiredSteps;
 	timer = setInterval(function(){
 		this.step(clockwise);

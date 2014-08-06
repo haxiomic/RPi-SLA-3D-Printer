@@ -14,6 +14,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<button id="test-motor" class="btn btn-primary">Test Motor</button>
+				<button id="stop-motor" class="btn btn-cancel">Stop Motor</button>
 			</div>
 		</div>
 	</div>
@@ -24,6 +25,9 @@
 
 		document.getElementById('test-motor').onclick = function () {
 			socket.emit('test-motor');
+		}
+		document.getElementById('stop-motor').onclick = function () {
+			socket.emit('stop-motor');
 		}
 	</script>
 </body>

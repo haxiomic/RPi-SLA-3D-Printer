@@ -13,6 +13,11 @@ var onConnection = function (socket) {
 		this.testMotor();
 		console.log('event: test-motor');
 	}.bind(this));
+	
+	socket.on('stop-motor', function(socket){
+		this.stopMotor();
+		console.log('event: stop-motor');
+	}.bind(this));
 }
 
 Server.prototype.start = function(options) {
@@ -24,7 +29,7 @@ Server.prototype.start = function(options) {
 	});
 
 	app.get('/', function(req, res){
-	  res.sendfile('./interface/index.html');
+	  res.sendFile('./interface/index.html');
 	});
 
 	io.on('connection', onConnection.bind(this));
@@ -35,5 +40,6 @@ Server.prototype.start = function(options) {
 };
 
 Server.prototype.testMotor = function() {};
+Server.prototype.stopMotor = function() {};
 
 module.exports = new Server();

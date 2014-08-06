@@ -8,5 +8,9 @@ Server.testMotor = function () {
 		clockwise: false,
 		sequenceInterval: 10
 	});
-	StepperMotor.spin(180);
+	StepperMotor.spin(90);
+}
+
+Server.stopMotor = function () {
+	StepperMotor.stop();
 }
