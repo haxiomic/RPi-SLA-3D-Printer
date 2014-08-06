@@ -10,7 +10,7 @@ var Server =  function (){
 var onConnection = function (socket) {
 	console.log('a user connected');
 	socket.on('test-motor', function(socket){
-		console.log('test motor');
+		this.testMotor();
 	});
 }
 
@@ -26,11 +26,13 @@ Server.prototype.start = function(options) {
 	  res.sendfile('./interface/index.html');
 	});
 
-	io.on('connection', onConnection);
+	io.on('connection', onConnection.bind(this));
 
 	http.listen(this.port, function(){
 		console.log('Listening on port '+this.port);
 	}.bind(this));
 };
+
+Server.prototype.testMotor = function() {};
 
 module.exports = new Server();

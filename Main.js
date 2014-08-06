@@ -3,12 +3,10 @@ var Server = require('./Server.js');
 
 Server.start();
 
-//start server
-//present interface
-
-/*StepperMotor.init({
-	clockwise: false,
-	sequenceInterval: 10
-});
-StepperMotor.spin(180);*/
-// StepperMotor.stop();
+Server.testMotor = function () {
+	StepperMotor.init({
+		clockwise: false,
+		sequenceInterval: 10
+	});
+	StepperMotor.spin(180);
+}
