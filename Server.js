@@ -11,7 +11,8 @@ var onConnection = function (socket) {
 	console.log('a user connected');
 	socket.on('test-motor', function(socket){
 		this.testMotor();
-	});
+		console.log('event: test-motor');
+	}.bind(this));
 }
 
 Server.prototype.start = function(options) {
